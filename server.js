@@ -7,7 +7,14 @@ const bodyParser=require('body-parser');
 const app=express();
 
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+    origin: 'https://frontend-react-tan.vercel.app', // your frontend URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // allow cookies or authentication headers
+    optionsSuccessStatus: 204
+  };
+  
+  app.use(cors(corsOptions));
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 
